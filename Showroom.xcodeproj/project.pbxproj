@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		773D3A141C7B7A2C0075F92F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D3A131C7B7A2C0075F92F /* AppDelegate.swift */; };
 		773D3A161C7B7A2C0075F92F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D3A151C7B7A2C0075F92F /* ViewController.swift */; };
-		773D3A191C7B7A2C0075F92F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 773D3A171C7B7A2C0075F92F /* Main.storyboard */; };
 		773D3A1B1C7B7A2C0075F92F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 773D3A1A1C7B7A2C0075F92F /* Assets.xcassets */; };
-		773D3A1E1C7B7A2C0075F92F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 773D3A1C1C7B7A2C0075F92F /* LaunchScreen.storyboard */; };
 		773D3A291C7B7A2C0075F92F /* ShowroomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D3A281C7B7A2C0075F92F /* ShowroomTests.swift */; };
 		773D3A341C7B7A2C0075F92F /* ShowroomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D3A331C7B7A2C0075F92F /* ShowroomUITests.swift */; };
 /* End PBXBuildFile section */
@@ -37,9 +35,7 @@
 		773D3A101C7B7A2C0075F92F /* Showroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		773D3A131C7B7A2C0075F92F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		773D3A151C7B7A2C0075F92F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		773D3A181C7B7A2C0075F92F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		773D3A1A1C7B7A2C0075F92F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		773D3A1D1C7B7A2C0075F92F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		773D3A1F1C7B7A2C0075F92F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		773D3A241C7B7A2C0075F92F /* ShowroomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShowroomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		773D3A281C7B7A2C0075F92F /* ShowroomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowroomTests.swift; sourceTree = "<group>"; };
@@ -99,9 +95,7 @@
 			children = (
 				773D3A131C7B7A2C0075F92F /* AppDelegate.swift */,
 				773D3A151C7B7A2C0075F92F /* ViewController.swift */,
-				773D3A171C7B7A2C0075F92F /* Main.storyboard */,
 				773D3A1A1C7B7A2C0075F92F /* Assets.xcassets */,
-				773D3A1C1C7B7A2C0075F92F /* LaunchScreen.storyboard */,
 				773D3A1F1C7B7A2C0075F92F /* Info.plist */,
 			);
 			path = Showroom;
@@ -229,9 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				773D3A1E1C7B7A2C0075F92F /* LaunchScreen.storyboard in Resources */,
 				773D3A1B1C7B7A2C0075F92F /* Assets.xcassets in Resources */,
-				773D3A191C7B7A2C0075F92F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,25 +283,6 @@
 			targetProxy = 773D3A301C7B7A2C0075F92F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		773D3A171C7B7A2C0075F92F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				773D3A181C7B7A2C0075F92F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		773D3A1C1C7B7A2C0075F92F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				773D3A1D1C7B7A2C0075F92F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		773D3A361C7B7A2C0075F92F /* Debug */ = {
