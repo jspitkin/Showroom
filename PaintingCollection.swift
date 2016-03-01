@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol PaintingCollectionDelegate: class {
+    func collection(collection: PaintingCollection, strokeAddedToPaintingAtIndex paintingIndex: Int)
+}
+
 class PaintingCollection {
     private var _paintings: [Painting] = []
     
@@ -22,22 +26,19 @@ class PaintingCollection {
     }
     
     func addPainting(painting: Painting) {
-        
+        _paintings.append(painting)
     }
     
     func removePaintingWithIndex(paintingIndex: Int) {
-        
-    }
-    
-    // MARK: Filtering and Sorting
-    func paintingsByAuthorByDate(author: String) -> [Int] {
-        return []
+        _paintings.removeAtIndex(paintingIndex)
     }
     
     func addStroke(stroke: Stroke, toPainting paintingIndex: Int) {
-        paintingChangedHandler?(paintingIndex: paintingIndex)
+        let painting: Painting = paintingWithIndex(paintingIndex)
+        painting.strokes.append(stroke)
+        delegate?.collection(self, strokeAddedToPaintingAtIndex: paintingIndex)
     }
     
     // MARK: Events
-    var paintingChangedHandler: ((paintingIndex: Int) -> Void)?
+    weak var delegate: PaintingCollectionDelegate?
 }

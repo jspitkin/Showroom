@@ -8,10 +8,13 @@
 
 import UIKit
 
-// add back UICollectionViewDataSource
 class PaintingListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    let paintings: PaintingCollection = PaintingCollection()
+    private var _paintingCollection: PaintingCollection = PaintingCollection()
+    
+    private var paintingListView: UICollectionView {
+        return view as! UICollectionView
+    }
     
     // MARK: - UIViewController Overrides
     override func loadView() {
@@ -20,34 +23,67 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     override func viewDidLoad() {
+        self.title = "Paintings"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: "newPainting")
         
+        //_paintingCollection.delegate = self
+        
+        paintingListView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(UICollectionViewCell.self))
+        paintingListView.dataSource = self
+        paintingListView.delegate = self
+    }
+    
+    func newPainting() {
+        let paintingViewController: PaintingViewController = PaintingViewController()
+        self.navigationController?.pushViewController(paintingViewController, animated: true)
     }
     
     // MARK: - UICollectionViewDelegate Methods
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        
         // Obtain data element based on indexPath
-        let thing: String = "hi"
+        let painting: Painting = _paintingCollection.paintingWithIndex(indexPath.item)
+        let paintingIndex: Int = indexPath.item
         
+        // Build a view controller and give it the data it needs
         let paintingViewController: PaintingViewController = PaintingViewController()
-        paintingViewController.labelView.text = thing
+        paintingViewController.paintingCollection = _paintingCollection
+        paintingViewController.paintingIndex = paintingIndex
+        
         navigationController?.pushViewController(paintingViewController, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5;
+        return _paintingCollection.paintingCount;
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let thing: String = "hello"
         
+        // Obtain data element based on indexPath
+        //let painting: Painting = _paintingCollection.paintingWithIndex(indexPath.item)
+        
+        // Convert into a view (or a cell)
         let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(UICollectionViewCell.self), forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.greenColor()
         
-        let titleLabel: UILabel = cell.contentView.subviews.count == 0 ? UILabel(frame: CGRectMake(0.0, 0.0, 50.0, 50.0)) : cell.contentView.subviews[0] as! UILabel
-        titleLabel.text = thing
-        titleLabel.textColor = UIColor.whiteColor()
-        cell.contentView.addSubview(titleLabel)
+        //let titleLabel: UILabel = UILabel(frame: CGRectMake(0.0, 0.0, 50.0, 50.0))
+        //titleLabel.text = "\(painting.strokes.count)"
+        //cell.contentView.addSubview(titleLabel)
+        
+        // This will be replaced with an instance of a Painting View
         
         return cell
+    }
+    
+//    private func paintingFromPaintView(paintView: PaintView) -> Painting {
+//        // TODO: Do conversion
+//    }
+//    
+//    private func painting(painting: Painting, toPaintView paintView: PaintView) {
+//        // TODO: Do conversion
+//    }
+    
+    // MARK: PaintingCollectionDelegate Methods
+    func collection(collection: PaintingCollection, strokeAddedToPaintingAtIndex paintingIndex: Int) {
+        //paintingListView.reloadData()
     }
 }
