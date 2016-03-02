@@ -39,6 +39,10 @@ class PaintingCollection {
         delegate?.collection(self, strokeAddedToPaintingAtIndex: paintingIndex)
     }
     
+    func getStrokes(paintingIndex: Int) -> [Stroke] {
+        return _paintings[paintingIndex].strokes
+    }
+    
     // MARK: Events
    weak var delegate: PaintingCollectionDelegate?
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class Painting {
-    var strokes: [Stroke] = []
+    var strokes: [Stroke]! = []
     //var aspectRatio: Double = 1.0
 }
 

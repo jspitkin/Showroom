@@ -10,7 +10,7 @@ import UIKit
 
 class PaintingViewController: UIViewController, BrushDelegate, PaintingDelegate{
     
-    private var _paintingCollection: PaintingCollection? = nil
+    private var _paintingCollection: PaintingCollection!
     private var _paintingIndex: Int? = nil
     
     private var _brushChooserViewController: BrushChooserViewController?
@@ -28,14 +28,14 @@ class PaintingViewController: UIViewController, BrushDelegate, PaintingDelegate{
         set { _paintingCollection = newValue }
     }
     
-    var paintingIndex: Int? {
+    var paintingIndex: Int! {
         get { return _paintingIndex }
         set { _paintingIndex = newValue }
     }
     
     var painting: Painting? {
         didSet {
-            // Load painting in
+            //_paintingView.strokes = _paintingCollection.getStrokes(paintingIndex)
         }
     }
 
@@ -47,6 +47,7 @@ class PaintingViewController: UIViewController, BrushDelegate, PaintingDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        _paintingView.strokes = _paintingCollection.getStrokes(paintingIndex)
         _brushChooserViewController = BrushChooserViewController()
         _brushChooserViewController?.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Brush", style: UIBarButtonItemStyle.Plain, target: self, action: "changeBrush")

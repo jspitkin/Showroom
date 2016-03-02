@@ -19,6 +19,8 @@ class PaintingView: UIView {
     private var _startX: CGFloat = 0
     private var _startY: CGFloat = 0
     
+    var strokes: [Stroke] = []
+    
     var color: CGColor = UIColor.blackColor().CGColor
     var endCap: CGLineCap = CGLineCap.Round
     var lineJoin: CGLineJoin = CGLineJoin.Round
@@ -57,6 +59,7 @@ class PaintingView: UIView {
         super.touchesEnded(touches, withEvent: event)
         let stroke: Stroke = Stroke(color: color, endCap: endCap, lineJoin: lineJoin, width: width, points: touchPoints)
         delegate?.addStroke(stroke)
+        strokes.append(stroke)
         touchPoints = [Point]()
     }
     
@@ -65,18 +68,31 @@ class PaintingView: UIView {
         
         let context: CGContext? = UIGraphicsGetCurrentContext()
         
-        CGContextSetLineWidth(context, CGFloat(width))
-        CGContextSetStrokeColorWithColor(context, color)
-        CGContextSetLineCap(context, endCap)
-        CGContextSetLineJoin(context, lineJoin)
-        
-        let demoPath: CGMutablePathRef = CGPathCreateMutable();
-        CGPathMoveToPoint(demoPath, nil, CGFloat(_startX), CGFloat(_startY))
+        let currentPath: CGMutablePathRef = CGPathCreateMutable();
+        CGPathMoveToPoint(currentPath, nil, CGFloat(_startX), CGFloat(_startY))
         for point in touchPoints {
-            CGPathAddLineToPoint(demoPath, nil, CGFloat(point.x), CGFloat(point.y))
+            CGContextSetLineWidth(context, CGFloat(width))
+            CGContextSetStrokeColorWithColor(context, color)
+            CGContextSetLineCap(context, endCap)
+            CGContextSetLineJoin(context, lineJoin)
+            CGPathAddLineToPoint(currentPath, nil, CGFloat(point.x), CGFloat(point.y))
         }
-        CGContextAddPath(context, demoPath)
+        CGContextAddPath(context, currentPath)
         CGContextStrokePath(context)
+        
+        for stroke in strokes {
+            let strokePath: CGMutablePathRef = CGPathCreateMutable();
+            CGContextSetLineWidth(context, CGFloat(stroke.width))
+            CGContextSetStrokeColorWithColor(context, stroke.color)
+            CGContextSetLineCap(context, stroke.endCap)
+            CGContextSetLineJoin(context, stroke.lineJoin)
+            CGPathMoveToPoint(strokePath, nil, CGFloat(stroke.points[0].x), CGFloat(stroke.points[0].y))
+            for point in stroke.points {
+                CGPathAddLineToPoint(strokePath, nil, CGFloat(point.x), CGFloat(point.y))
+            }
+            CGContextAddPath(context, strokePath)
+            CGContextStrokePath(context)
+        }
         
     }
     
