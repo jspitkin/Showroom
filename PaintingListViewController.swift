@@ -23,8 +23,9 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()        
         self.title = "Paintings"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: "newPainting")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Plain, target: self, action: "newPainting")
         
         //_paintingCollection.delegate = self
         

@@ -8,10 +8,15 @@
 
 import UIKit
 
-class PaintingViewController: UIViewController {
+class PaintingViewController: UIViewController, BrushDelegate {
     
     private var _paintingCollection: PaintingCollection? = nil
     private var _paintingIndex: Int? = nil
+    private var _brushChooserViewController: BrushChooserViewController?
+    private var _color: CGColor!
+    private var _endCap: CGLineCap!
+    private var _lineJoin: CGLineJoin!
+    private var _width: Float!
     
     var paintingCollection: PaintingCollection? {
         get { return _paintingCollection }
@@ -39,12 +44,24 @@ class PaintingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Painting"
+        _brushChooserViewController = BrushChooserViewController()
         labelView.backgroundColor = UIColor.whiteColor()
         labelView.textAlignment = .Center
         labelView.numberOfLines = -1
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Brush", style: UIBarButtonItemStyle.Plain, target: self, action: "changeBrush")
         
-        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Painting"
+        self.navigationItem.backBarButtonItem = backButton
     }
+    
+    func changeBrush() {
+        _brushChooserViewController?.delegate = self
+        self.navigationController?.pushViewController(_brushChooserViewController!, animated: true)
+    }
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,6 +75,16 @@ class PaintingViewController: UIViewController {
         let painting: Painting = _paintingCollection!.paintingWithIndex(paintingIndex!)
         labelView.text = "Cute painting"
     }
+    
+    func brushSaved(color: CGColor, endCap: CGLineCap, lineJoin: CGLineJoin, width: Float) {
+        _color = color
+        _endCap = endCap
+        _lineJoin = lineJoin
+        _width = width
+    }
+    
+
+    
     
 //    private func strokeToPolyline(stroke: Stroke) -> Polyline {
 //        // TODO: Convert color and line characteristics
