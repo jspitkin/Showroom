@@ -16,7 +16,7 @@ class PaintingCollection {
     private var _paintings: [Painting] = []
     
     // MARK: Indexing
-    var paintingCount: Int {
+    var paintingCount: Int! {
         return _paintings.count
     }
     
@@ -40,5 +40,5 @@ class PaintingCollection {
     }
     
     // MARK: Events
-    weak var delegate: PaintingCollectionDelegate?
+   weak var delegate: PaintingCollectionDelegate?
 }

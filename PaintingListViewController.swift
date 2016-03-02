@@ -36,6 +36,11 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
     
     func newPainting() {
         let paintingViewController: PaintingViewController = PaintingViewController()
+        var newPainting = Painting()
+        _paintingCollection.addPainting(newPainting)
+        paintingViewController.paintingCollection = _paintingCollection
+        paintingViewController.paintingIndex = _paintingCollection.paintingCount - 1
+        paintingListView.reloadData()
         self.navigationController?.pushViewController(paintingViewController, animated: true)
     }
     
@@ -49,6 +54,7 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
         let paintingViewController: PaintingViewController = PaintingViewController()
         paintingViewController.paintingCollection = _paintingCollection
         paintingViewController.paintingIndex = paintingIndex
+        paintingViewController.painting = painting
         
         navigationController?.pushViewController(paintingViewController, animated: true)
     }
@@ -64,11 +70,12 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
         
         // Convert into a view (or a cell)
         let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(UICollectionViewCell.self), forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.greenColor()
+        cell.backgroundColor = UIColor.whiteColor()
         
-        //let titleLabel: UILabel = UILabel(frame: CGRectMake(0.0, 0.0, 50.0, 50.0))
-        //titleLabel.text = "\(painting.strokes.count)"
-        //cell.contentView.addSubview(titleLabel)
+        //var title = UILabel(frame: CGRectMake(0, 0, cell.bounds.size.width, 40))
+        //title.text = "\(_paintingCollection.paintingWithIndex(indexPath.item).strokes.count)"
+        var painting = PaintingView()
+        cell.contentView.addSubview(painting)
         
         // This will be replaced with an instance of a Painting View
         
@@ -85,6 +92,6 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
     
     // MARK: PaintingCollectionDelegate Methods
     func collection(collection: PaintingCollection, strokeAddedToPaintingAtIndex paintingIndex: Int) {
-        //paintingListView.reloadData()
+        paintingListView.reloadData()
     }
 }

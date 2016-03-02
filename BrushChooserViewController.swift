@@ -23,14 +23,12 @@ class BrushChooserViewController: UIViewController {
     
     override func loadView() {
         view = ControlPanelView()
+        self.navigationItem.hidesBackButton = true
+        let saveButton = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: "saveChanges")
+        self.navigationItem.leftBarButtonItem = saveButton;
     }
     
     override func viewDidLoad(){
-        //self.navigationItem.hidesBackButton = true
-        //let saveButton = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Bordered, target: self, action: "saveChanges")
-        //self.navigationItem.rightBarButtonItem = saveButton;
-        self.navigationItem.leftBarButtonItem?.target = "saveChangeds"
-        
     }
     
     

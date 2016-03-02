@@ -10,7 +10,6 @@
 		773D3A141C7B7A2C0075F92F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D3A131C7B7A2C0075F92F /* AppDelegate.swift */; };
 		773D3A1B1C7B7A2C0075F92F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 773D3A1A1C7B7A2C0075F92F /* Assets.xcassets */; };
 		778F0CA61C7BCEA500A2D887 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 778F0CA51C7BCEA500A2D887 /* Default-568h@2x.png */; };
-		77A256A11C8522D200AB7DF4 /* PaintingFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A256A01C8522D200AB7DF4 /* PaintingFrameView.swift */; };
 		77A256A31C8546D000AB7DF4 /* BrushChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A256A21C8546D000AB7DF4 /* BrushChooserViewController.swift */; };
 		77B0D1931C7E6E3200317686 /* brushPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B0D18D1C7E6E3200317686 /* brushPreview.swift */; };
 		77B0D1941C7E6E3200317686 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B0D18E1C7E6E3200317686 /* ColorPicker.swift */; };
@@ -22,6 +21,7 @@
 		77BD130F1C7CC10F00F857DD /* PaintingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD130E1C7CC10F00F857DD /* PaintingCollection.swift */; };
 		77BD13111C7CC35000F857DD /* PaintingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD13101C7CC35000F857DD /* PaintingListViewController.swift */; };
 		77BD13141C7CC58E00F857DD /* PaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD13131C7CC58E00F857DD /* PaintingViewController.swift */; };
+		77F6DBBF1C86766700F8A9AF /* PaintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6DBBE1C86766700F8A9AF /* PaintingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,6 @@
 		773D3A241C7B7A2C0075F92F /* ShowroomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShowroomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		773D3A2F1C7B7A2C0075F92F /* ShowroomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShowroomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		778F0CA51C7BCEA500A2D887 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		77A256A01C8522D200AB7DF4 /* PaintingFrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingFrameView.swift; sourceTree = "<group>"; };
 		77A256A21C8546D000AB7DF4 /* BrushChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushChooserViewController.swift; sourceTree = "<group>"; };
 		77B0D18D1C7E6E3200317686 /* brushPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = brushPreview.swift; path = ../Brush/Brush/brushPreview.swift; sourceTree = "<group>"; };
 		77B0D18E1C7E6E3200317686 /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPicker.swift; path = ../Brush/Brush/ColorPicker.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		77BD130E1C7CC10F00F857DD /* PaintingCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingCollection.swift; sourceTree = "<group>"; };
 		77BD13101C7CC35000F857DD /* PaintingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingListViewController.swift; sourceTree = "<group>"; };
 		77BD13131C7CC58E00F857DD /* PaintingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingViewController.swift; sourceTree = "<group>"; };
+		77F6DBBE1C86766700F8A9AF /* PaintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				77BD13131C7CC58E00F857DD /* PaintingViewController.swift */,
-				77A256A01C8522D200AB7DF4 /* PaintingFrameView.swift */,
+				77F6DBBE1C86766700F8A9AF /* PaintingView.swift */,
 			);
 			name = "Painting Detail";
 			sourceTree = "<group>";
@@ -293,13 +293,13 @@
 			files = (
 				77B0D1961C7E6E3200317686 /* strokeEndCapChooser.swift in Sources */,
 				77BD13111C7CC35000F857DD /* PaintingListViewController.swift in Sources */,
-				77A256A11C8522D200AB7DF4 /* PaintingFrameView.swift in Sources */,
 				773D3A141C7B7A2C0075F92F /* AppDelegate.swift in Sources */,
 				77B0D1971C7E6E3200317686 /* strokeJoinChooser.swift in Sources */,
 				77B0D1941C7E6E3200317686 /* ColorPicker.swift in Sources */,
 				77BD130D1C7CBFDF00F857DD /* Painting.swift in Sources */,
 				77A256A31C8546D000AB7DF4 /* BrushChooserViewController.swift in Sources */,
 				77BD130F1C7CC10F00F857DD /* PaintingCollection.swift in Sources */,
+				77F6DBBF1C86766700F8A9AF /* PaintingView.swift in Sources */,
 				77B0D1951C7E6E3200317686 /* ControlPanelView.swift in Sources */,
 				77B0D1981C7E6E3200317686 /* strokeWidthChooser.swift in Sources */,
 				77BD13141C7CC58E00F857DD /* PaintingViewController.swift in Sources */,

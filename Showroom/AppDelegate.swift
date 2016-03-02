@@ -18,17 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let paintingListViewController = PaintingListViewController()
         
-        //let controlsViewController: UIViewController = UIViewController()
-        //controlsViewController.view.backgroundColor = UIColor.orangeColor()
-        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = UINavigationController(rootViewController: paintingListViewController)
         window?.makeKeyAndVisible()
-        
-        //controlPanel = ControlPanelView(frame: window!.bounds)
-        //controlsViewController.view.addSubview(controlPanel!)
 
-        
         return true
     }
     
