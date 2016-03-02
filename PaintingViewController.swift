@@ -50,14 +50,21 @@ class PaintingViewController: UIViewController, BrushDelegate, PaintingDelegate{
         _paintingView.strokes = _paintingCollection.getStrokes(paintingIndex)
         _brushChooserViewController = BrushChooserViewController()
         _brushChooserViewController?.delegate = self
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Brush", style: UIBarButtonItemStyle.Plain, target: self, action: "changeBrush")
-        print("\(paintingIndex)")
+        
+        let trashImage = UIImage(named: "trash")!
+        let brushButton: UIBarButtonItem = UIBarButtonItem(title: "Brush", style: UIBarButtonItemStyle.Plain, target: self, action: "changeBrush")
+        let deleteButton: UIBarButtonItem = UIBarButtonItem(image: trashImage, style: UIBarButtonItemStyle.Plain, target: self, action: "delete")
+        self.navigationItem.rightBarButtonItems = [brushButton, deleteButton]
     }
     
     func changeBrush() {
         self.navigationController?.pushViewController(_brushChooserViewController!, animated: true)
     }
     
+    func delete() {
+        paintingCollection?.removePaintingWithIndex(paintingIndex)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     
     func brushSaved(color: CGColor, endCap: CGLineCap, lineJoin: CGLineJoin, width: Float) {
         _paintingView.endCap = endCap

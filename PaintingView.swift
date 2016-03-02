@@ -68,18 +68,6 @@ class PaintingView: UIView {
         
         let context: CGContext? = UIGraphicsGetCurrentContext()
         
-        let currentPath: CGMutablePathRef = CGPathCreateMutable();
-        CGPathMoveToPoint(currentPath, nil, CGFloat(_startX), CGFloat(_startY))
-        for point in touchPoints {
-            CGContextSetLineWidth(context, CGFloat(width))
-            CGContextSetStrokeColorWithColor(context, color)
-            CGContextSetLineCap(context, endCap)
-            CGContextSetLineJoin(context, lineJoin)
-            CGPathAddLineToPoint(currentPath, nil, CGFloat(point.x), CGFloat(point.y))
-        }
-        CGContextAddPath(context, currentPath)
-        CGContextStrokePath(context)
-        
         for stroke in strokes {
             let strokePath: CGMutablePathRef = CGPathCreateMutable();
             CGContextSetLineWidth(context, CGFloat(stroke.width))
@@ -93,6 +81,18 @@ class PaintingView: UIView {
             CGContextAddPath(context, strokePath)
             CGContextStrokePath(context)
         }
+        
+        let currentPath: CGMutablePathRef = CGPathCreateMutable();
+        CGPathMoveToPoint(currentPath, nil, CGFloat(_startX), CGFloat(_startY))
+        for point in touchPoints {
+            CGContextSetLineWidth(context, CGFloat(width))
+            CGContextSetStrokeColorWithColor(context, color)
+            CGContextSetLineCap(context, endCap)
+            CGContextSetLineJoin(context, lineJoin)
+            CGPathAddLineToPoint(currentPath, nil, CGFloat(point.x), CGFloat(point.y))
+        }
+        CGContextAddPath(context, currentPath)
+        CGContextStrokePath(context)
         
     }
     

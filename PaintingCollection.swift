@@ -10,6 +10,7 @@ import Foundation
 
 protocol PaintingCollectionDelegate: class {
     func collection(collection: PaintingCollection, strokeAddedToPaintingAtIndex paintingIndex: Int)
+    func paintingDeleted()
 }
 
 class PaintingCollection {
@@ -31,6 +32,7 @@ class PaintingCollection {
     
     func removePaintingWithIndex(paintingIndex: Int) {
         _paintings.removeAtIndex(paintingIndex)
+        delegate?.paintingDeleted()
     }
     
     func addStroke(stroke: Stroke, toPainting paintingIndex: Int) {

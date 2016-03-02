@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaintingListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PaintingListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PaintingCollectionDelegate {
 
     private var _paintingCollection: PaintingCollection = PaintingCollection()
     
@@ -23,12 +23,11 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         self.title = "Paintings"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Plain, target: self, action: "newPainting")
         
-        //_paintingCollection.delegate = self
-        
+        _paintingCollection.delegate = self
         paintingListView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(UICollectionViewCell.self))
         paintingListView.dataSource = self
         paintingListView.delegate = self
@@ -70,7 +69,7 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
         
         // Convert into a view (or a cell)
         let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(UICollectionViewCell.self), forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.greenColor()
         
         //var title = UILabel(frame: CGRectMake(0, 0, cell.bounds.size.width, 40))
         //title.text = "\(_paintingCollection.paintingWithIndex(indexPath.item).strokes.count)"
@@ -82,16 +81,12 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
         return cell
     }
     
-//    private func paintingFromPaintView(paintView: PaintView) -> Painting {
-//        // TODO: Do conversion
-//    }
-//    
-//    private func painting(painting: Painting, toPaintView paintView: PaintView) {
-//        // TODO: Do conversion
-//    }
-    
     // MARK: PaintingCollectionDelegate Methods
     func collection(collection: PaintingCollection, strokeAddedToPaintingAtIndex paintingIndex: Int) {
+        paintingListView.reloadData()
+    }
+    
+    func paintingDeleted() {
         paintingListView.reloadData()
     }
 }
