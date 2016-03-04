@@ -23,6 +23,11 @@ class PaintingViewController: UIViewController, BrushDelegate, PaintingDelegate{
     private var _lineJoin: CGLineJoin!
     private var _width: Float!
     
+    var paintingView: PaintingView? {
+        get { return _paintingView }
+        set { _paintingView = newValue! }
+    }
+    
     var paintingCollection: PaintingCollection? {
         get { return _paintingCollection }
         set { _paintingCollection = newValue }
@@ -35,7 +40,7 @@ class PaintingViewController: UIViewController, BrushDelegate, PaintingDelegate{
     
     var painting: Painting? {
         didSet {
-            //_paintingView.strokes = _paintingCollection.getStrokes(paintingIndex)
+            _paintingView.strokes = _paintingCollection.getStrokes(paintingIndex)
         }
     }
 

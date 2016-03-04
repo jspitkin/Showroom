@@ -63,21 +63,14 @@ class PaintingListViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        // Obtain data element based on indexPath
-        //let painting: Painting = _paintingCollection.paintingWithIndex(indexPath.item)
-        
-        // Convert into a view (or a cell)
+
         let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(UICollectionViewCell.self), forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.greenColor()
+        cell.backgroundColor = UIColor.whiteColor()
         
-        //var title = UILabel(frame: CGRectMake(0, 0, cell.bounds.size.width, 40))
-        //title.text = "\(_paintingCollection.paintingWithIndex(indexPath.item).strokes.count)"
-        var painting = PaintingView()
-        cell.contentView.addSubview(painting)
-        
-        // This will be replaced with an instance of a Painting View
-        
+        let title = UILabel(frame: CGRectMake(cell.bounds.width * 0.38, 5, cell.bounds.size.width, 40))
+        title.text = "\(indexPath.item + 1)"
+
+        cell.addSubview(title)
         return cell
     }
     
